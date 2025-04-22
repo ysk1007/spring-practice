@@ -18,15 +18,14 @@ public class MemberForm {
 	private int memberNo;
 	private String memberId;
 	private String memberPw;
-	private String memberRole;
 	
 	public Member toEntity() {
-		Member member = new Member();
+		Member entity = new Member();
 		
-		member.setMemberNo(this.memberNo);
-		member.setMemberId(this.memberId);
-		member.setMemberPw(this.memberPw);
+		entity.setMemberNo(this.memberNo);
+		entity.setMemberId(this.memberId);
+		entity.setMemberPw(this.memberPw);
 		
-		return member;
+		return entity;
 	}
 }

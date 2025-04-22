@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>비밀번호 수정</title>
+</head>
+<body>
+
+<!-- include -->
+{{>layouts/header}}
+
+	<form method="post" action="/member/modifyMemberPw">
+		<input type = "hidden" value="{{loginMember.memberId}}" name ="memberId">		
+		<div class="container mt-5">
+			<div class="row">
+				<h3>비밀번호 수정</h3>
+				{{#msg}}
+				<div>{{msg}}</div>
+				{{/msg}}
+				<div class="mb-3 mt-3">
+					<label for="pw" class="form-label">기존 비밀번호 : </label> <input type="password"
+						class="form-control" id="pw" name="memberPw">
+				</div>
+				<div class="mb-3">
+					<label for="newPw" class="form-label">새로운 비밀번호 : </label> <input
+						type="password" class="form-control" id="newPw" name="newPw">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">비밀번호 변경</button>
+		</div>
+	</form>
+
+<!-- include -->
+{{>layouts/footer}}
+
+</body>
+</html>

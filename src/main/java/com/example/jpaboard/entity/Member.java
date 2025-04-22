@@ -19,7 +19,9 @@ public class Member {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="member_no")
 	private int memberNo;
+	
 	@Column(name="member_id")
 	private String memberId;
 	@Column(name="member_pw")

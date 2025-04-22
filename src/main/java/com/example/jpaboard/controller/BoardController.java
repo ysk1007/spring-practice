@@ -100,6 +100,8 @@ public class BoardController {
 		// findByBoardTitleContaining(페이징 옵션, 특정 단어)
 		Page<Board> list = boardRepository.findByBoardTitleContaining(pageable, word);
 
+		log.debug("디버깅 : " + list.toString());
+		
 		// 넘기기
 		model.addAttribute("list", list);						// 게시글 리스트
 		model.addAttribute("prePage", list.getNumber()-1);		// 이전 페이지
