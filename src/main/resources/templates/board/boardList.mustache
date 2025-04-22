@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>보드 리스트</title>
+</head>
+<body>		
+
+{{>layouts/header}}
+
+	<div class="container-fluid p-4 bg-primary text-white text-center">
+	  <h1>게시판📒</h1>
+	  <p>글을 읽고 써보자~</p>
+	</div>
+	
+	<div class="container mt-5">
+	  <div class="row">
+	  
+	    <div class="col-sm-20">
+	      	<a href="/board/addBoard" class="btn btn-primary">게시글 추가</a>
+	      	
+		<table class="table table-striped table-hover">
+		    <thead>
+		    <tr>
+		        <th scope="col">#</th>
+		        <th scope="col">제목</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    <!-- 리스트 출력 -->
+		    {{#list}}
+		        <tr>
+		            <th>{{boardNo}}</th>
+		            <td><a href="/board/boardOne?boardNo={{boardNo}}">{{boardTitle}}</a></td>
+		        </tr>
+		    {{/list}}
+		    </tbody>
+		</table>
+		
+				<!-- 네비게이션 -->
+		<div class="col-sm-20" style=align:center>
+			<!-- 첫 페이지가 아닐 때 -->
+			{{^list.isFirst}}
+				<a href="/board/boardList?currentPage={{prePage}}&word={{word}}" class="btn btn-primary">이전</a>
+			{{/list.isFirst}}
+			
+			<!-- 현재 페이지 출력 -->
+			{{currentPage}}
+			
+			<!-- 다음 페이지가 있을 때 -->
+			{{#list.hasNext}}
+				<a href="/board/boardList?currentPage={{nextPage}}&word={{word}}" class="btn btn-primary">다음</a>
+			{{/list.hasNext}}
+		</div>
+		
+	    </div>
+	    
+	    <div class="col-sm-20">
+	    
+    	<!-- 검색 -->
+		<form action="/board/boardList" method="get">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" name="word" value="{{word}}" placeholder="제목 검색">
+				<button type="submit" class="btn btn-success">검색</button>
+			</div>
+		</form>
+	    </div>
+	    
+	  </div>
+	</div>
+	
+{{>layouts/footer}}
+</body>
+</html>
